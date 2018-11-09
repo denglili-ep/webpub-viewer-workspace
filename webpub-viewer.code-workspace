@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "webpub-viewer"
+		},
+		{
+			"path": "r2-navigator-web"
+		},
+		{
+			"path": "r2-glue-js"
+		},
+		{
+			"path": "r2-webpub-model-js"
+		}
+	],
+	"settings": {}
+}

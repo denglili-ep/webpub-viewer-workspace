@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "name": "webpub-viewer-workspace",
+  "version": "0.0.0",
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "npm-run-all": "^4.1.2"
+  },
+  "scripts": {
+    "preinstall": "npm run clone:r2-webpub-model-js && npm run clone:r2-glue-js && npm run clone:r2-navigator-web && npm run clone:webpub-viewer",
+    "build": "npm-run-all --serial build:**",
+    "watch": "npm run build && concurrently \"npm:watch:*\" \"npm:watch-app:*\"",
+    "start": "npm run build && concurrently \"npm:watch:*\" \"npm:start-app:*\"",
+    "watch-app:nyu-reader": "cd nyu-reader && npm run watch",
+    "start-app:nyu-reader": "cd nyu-reader && npm run start",
+    "build:r2-webpub-model-js": "cd r2-webpub-model-js && npm run build",
+    "build:r2-glue-js": "cd r2-glue-js && npm run build",
+    "build:r2-navigator-web": "cd r2-navigator-web && npm run build",
+    "build:webpub-viewer": "cd webpub-viewer && npm run prepublish",
+    "clone:r2-glue-js": "[ ! -d r2-glue-js ] && git clone git@github.com:evidentpoint/r2-glue-js.git || :",
+    "clone:r2-webpub-model-js": "[ ! -d r2-webpub-model-js ] && git clone git@github.com:evidentpoint/r2-webpub-model-js.git || :",
+    "clone:r2-navigator-web": "[ ! -d r2-navigator-web ] && git clone git@github.com:evidentpoint/r2-navigator-web.git || :",
+    "clone:webpub-viewer": "[ ! -d nyu-reader ] && git clone git@github.com:evidentpoint/webpub-viewer.git || :",
+    "clean:npm": "rm -rf ./node_modules && rm -rf ./**/node_modules && rm -rf ./**/yarn.lock"
+  },
+  "workspaces": {
+    "packages": [
+      "r2-webpub-model-js",
+      "r2-glue-js",
+      "r2-navigator-web",
+      "webpub-viewer"
+    ],
+    "nohoist": [
+      "**/r2-webpub-model-js",
+      "**/r2-webpub-model-js/**",
+      "**/r2-glue-js",
+      "**/r2-glue-js/**",
+      "**/r2-navigator-web",
+      "**/r2-navigator-web/**"
+    ]
+  }
+}
