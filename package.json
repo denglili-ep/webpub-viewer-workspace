@@ -19,8 +19,8 @@
     "build:webpub-viewer": "cd webpub-viewer && npm run prepublish",
     "clone:r2-glue-js": "[ ! -d r2-glue-js ] && git clone git@github.com:evidentpoint/r2-glue-js.git || :",
     "clone:r2-webpub-model-js": "[ ! -d r2-webpub-model-js ] && git clone git@github.com:evidentpoint/r2-webpub-model-js.git || :",
-    "clone:r2-navigator-web": "[ ! -d r2-navigator-web ] && git clone git@github.com:evidentpoint/r2-navigator-web.git || :",
-    "clone:webpub-viewer": "[ ! -d webpub-viewer ] && git clone git@github.com:evidentpoint/webpub-viewer.git || :",
+    "clone:r2-navigator-web": "[ ! -d r2-navigator-web ] && git clone -b webpub-viewer git@github.com:evidentpoint/r2-navigator-web.git || :",
+    "clone:webpub-viewer": "[ ! -d webpub-viewer ] && git clone -b r2-navigator-web git@github.com:evidentpoint/webpub-viewer.git || :",
     "clean:npm": "rm -rf ./node_modules && rm -rf ./**/node_modules && rm -rf ./**/yarn.lock"
   },
   "workspaces": {
